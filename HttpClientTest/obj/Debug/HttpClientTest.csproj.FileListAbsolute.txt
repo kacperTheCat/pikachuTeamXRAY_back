@@ -1,0 +1,7 @@
+C:\PikachuTeam\HttpClientTest\bin\Debug\HttpClientTest.exe.config
+C:\PikachuTeam\HttpClientTest\bin\Debug\HttpClientTest.exe
+C:\PikachuTeam\HttpClientTest\bin\Debug\HttpClientTest.pdb
+C:\PikachuTeam\HttpClientTest\obj\Debug\HttpClientTest.csprojResolveAssemblyReference.cache
+C:\PikachuTeam\HttpClientTest\obj\Debug\HttpClientTest.csproj.CoreCompileInputs.cache
+C:\PikachuTeam\HttpClientTest\obj\Debug\HttpClientTest.exe
+C:\PikachuTeam\HttpClientTest\obj\Debug\HttpClientTest.pdb
