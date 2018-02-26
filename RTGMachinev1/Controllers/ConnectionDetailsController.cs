@@ -8,12 +8,12 @@ using RTGMachinev1.Models;
 
 namespace RTGMachinev1.Controllers
 {
-    public class ConnectionInfoController : ApiController
+    public class ConnectionDetailsController : ApiController
     {
         // GET: api/ConnectionInfo
-        public ConnectionInfo Get()
+        public ConnectionDetails Get()
         {
-            ConnectionInfo connectionInfo = new ConnectionInfo();
+            ConnectionDetails connectionInfo = new ConnectionDetails();
             return connectionInfo;
         }
 

@@ -7,13 +7,13 @@ using System.Web;
 
 namespace RTGMachinev1.Models
 {
-    public class ConnectionInfo
+    public class ConnectionDetails
     {
         public string DeviceName { get; set; }
         public string IpAddress { get; set; }
         public int Version { get; set; }
 
-        public ConnectionInfo()
+        public ConnectionDetails()
         {
             DeviceName = Environment.MachineName;
             IpAddress = GetLocalIPAddress();
