@@ -15,7 +15,7 @@ namespace RTGMachinev1.Models
 
         public ConnectionDetails()
         {
-            DeviceName = Environment.MachineName;
+            DeviceName = "X-Ray-/"+Environment.MachineName;
             IpAddress = GetLocalIPAddress();
             Version = 1;
         }

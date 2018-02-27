@@ -17,6 +17,7 @@ using System.Web.Hosting;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using RTGMachinev1.Models;
 
 namespace CameraControl.Areas.HelpPage.Controllers
 {
@@ -27,19 +28,24 @@ namespace CameraControl.Areas.HelpPage.Controllers
         VideoCaptureDevice videoSource;
         public Bitmap bitmap;
         // GET: api/Camera
-        public HttpResponseMessage Get()
-        {            
-            var result = new HttpResponseMessage(HttpStatusCode.OK);            
-          
+        public CameraImage Get()
+        {
+            CameraImage cameraImage = new CameraImage();
+
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
             videoSource.NewFrame += new NewFrameEventHandler(video_NewFrame);
             videoSource.Start();          
 
             videoSource.WaitForStop();
-          
-            result.Content = new ByteArrayContent(stream.ToArray());
-            result.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+
+            byte[] imageStreamByteArray = stream.ToArray();
+            string imageBase64String = Convert.ToBase64String(imageStreamByteArray);
+            cameraImage.Id = 1;
+            cameraImage.Base64 = imageBase64String;
+
+            //Filtry obrazu
+            //TODO: podzielic, filtry
             bool BlackAndWhite = false, Greyscale = false, changeColor = false;
             for (int x = 0; x < bitmap.Width; x++)
             {
@@ -69,14 +75,18 @@ namespace CameraControl.Areas.HelpPage.Controllers
 
                 }
             }
+
+            //Zapisywanie do pliku
             byte[] imageBytes = stream.ToArray();
             string base64String = Convert.ToBase64String(imageBytes);
-            File.WriteAllBytes(@"C:\Users\rymszmon\source\webapi\CameraControl\tobase64String.bs64", imageBytes);
+            File.WriteAllBytes(@"C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\tobase64String.bs64", imageBytes);
             byte[] imageDecoded = Convert.FromBase64String(base64String);
-            File.WriteAllBytes(@"C:\Users\rymszmon\source\webapi\CameraControl\frombase64String.jpg", imageDecoded);
+            File.WriteAllBytes(@"C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\frombase64String.jpg", imageDecoded);
             bitmap.Dispose();
             bitmap = null;
-            return result;            
+
+
+            return cameraImage;            
         }
         
         private void video_NewFrame(object sender,
