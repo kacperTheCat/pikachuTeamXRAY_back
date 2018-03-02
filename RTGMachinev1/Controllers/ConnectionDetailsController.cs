@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using RTGMachinev1.Models;
+﻿using System.Web.Http;
+using System.Web.Http.Cors;
+using Contracts.Classes;
+using Services.Interfaces;
 
 namespace RTGMachinev1.Controllers
 {
     public class ConnectionDetailsController : ApiController
     {
-        // GET: api/ConnectionDetails
-        public ConnectionDetails Get()
+        private readonly IConnectionService _connectionService;
+
+        public ConnectionDetailsController(IConnectionService connectionService)
         {
-            ConnectionDetails connectionInfo = new ConnectionDetails();
-            return connectionInfo;
+            _connectionService = connectionService;
+        }
+
+        //GET: api/ConnectionInfo
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public ConnectionDetailsResponse GetDetails()
+        {
+            var connectionDetailsResponse = _connectionService.GetDetails();
+
+            return connectionDetailsResponse;
         }
     }
 }

@@ -1,124 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Drawing;
-using AForge;
-using AForge.Imaging;
-using AForge.Video;
-using AForge.Video.DirectShow;
-using AForge.Imaging.Filters;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Net.Http.Headers;
-using System.Web.Hosting;
-using System.IO;
-using System.Drawing;
-using System.Drawing.Imaging;
-using RTGMachinev1.Models;
+﻿using System.Web.Http;
+using Services.Interfaces;
+using Contracts.Classes;
+using System.Web.Http.Cors;
 
 namespace CameraControl.Areas.HelpPage.Controllers
 {
     public class CameraController : ApiController
     {
-        MemoryStream stream = new MemoryStream();
-        FilterInfoCollection videoDevices;
-        VideoCaptureDevice videoSource;
-        public Bitmap bitmap;
+        private readonly IImageService _imageService;
+
+        public CameraController(IImageService imageService)
+        {
+            _imageService = imageService;
+        }
+
         // GET: api/Camera
-        public CameraImage Get()
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public CameraImageResponse GetImage()
         {
-            CameraImage cameraImage = new CameraImage();
+            var cameraImageResponse = _imageService.GetImage();
 
-            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
-            videoSource.NewFrame += new NewFrameEventHandler(video_NewFrame);
-            videoSource.Start();          
-
-            videoSource.WaitForStop();
-
-            byte[] imageStreamByteArray = stream.ToArray();
-            string imageBase64String = Convert.ToBase64String(imageStreamByteArray);
-            cameraImage.Id = 1;
-            cameraImage.Base64 = imageBase64String;
-
-            //Filtry obrazu
-            //TODO: podzielic, filtry
-            bool BlackAndWhite = false, Greyscale = false, changeColor = false;
-            for (int x = 0; x < bitmap.Width; x++)
-            {
-                for (int y = 0; y < bitmap.Height; y++)
-                {
-                    if (changeColor == true)
-                    {
-                        Color pixelColor = bitmap.GetPixel(x, y);
-                        if (BlackAndWhite == true)
-                        {
-                            int BWColor;
-                            if ((pixelColor.R + pixelColor.G + pixelColor.B) / 3 > 115)
-                                BWColor = 255;
-                            else
-                                BWColor = 0;
-                            pixelColor = Color.FromArgb(BWColor, BWColor, BWColor);
-                        }
-                        if (Greyscale == true)
-                        {
-                            int greyColor = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
-                            pixelColor = Color.FromArgb(greyColor, greyColor, greyColor);
-                        }
-
-                        bitmap.SetPixel(x, y, pixelColor);
-                    }
-
-
-                }
-            }
-
-            //Zapisywanie do pliku
-            byte[] imageBytes = stream.ToArray();
-            string base64String = Convert.ToBase64String(imageBytes);
-            File.WriteAllBytes(@"C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\tobase64String.bs64", imageBytes);
-            byte[] imageDecoded = Convert.FromBase64String(base64String);
-            File.WriteAllBytes(@"C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\frombase64String.jpg", imageDecoded);
-            bitmap.Dispose();
-            bitmap = null;
-
-
-            return cameraImage;            
-        }
-        
-        private void video_NewFrame(object sender,
-        NewFrameEventArgs eventArgs)
-        {            
-            bitmap = (Bitmap)eventArgs.Frame.Clone();            
-            bitmap.Save(stream, ImageFormat.Jpeg);
-
-            if (bitmap != null)
-                videoSource.SignalToStop();
-             
+            return cameraImageResponse;
         }
 
-        // GET: api/Camera/5
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST: api/Camera
-        public void Post([FromBody]string value)
-        {
-        }
+        //Filtry obrazu
+        //TODO: podzielic, filtry
+        //bool BlackAndWhite = false, Greyscale = false, changeColor = false;
+        //    for (int x = 0; x < bitmap.Width; x++)
+        //    {
+        //        for (int y = 0; y < bitmap.Height; y++)
+        //        {
+        //            if (changeColor == true)
+        //            {
+        //                Color pixelColor = bitmap.GetPixel(x, y);
+        //                if (BlackAndWhite == true)
+        //                {
+        //                    int BWColor;
+        //                    if ((pixelColor.R + pixelColor.G + pixelColor.B) / 3 > 115)
+        //                        BWColor = 255;
+        //                    else
+        //                        BWColor = 0;
+        //                    pixelColor = Color.FromArgb(BWColor, BWColor, BWColor);
+        //                }
+        //                if (Greyscale == true)
+        //                {
+        //                    int greyColor = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
+        //                    pixelColor = Color.FromArgb(greyColor, greyColor, greyColor);
+        //                }
 
-        // PUT: api/Camera/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //                bitmap.SetPixel(x, y, pixelColor);
+        //            }
 
-        // DELETE: api/Camera/5
-        public void Delete(int id)
-        {
-        }
+
+        //        }
+        //    }
+
     }
 }
