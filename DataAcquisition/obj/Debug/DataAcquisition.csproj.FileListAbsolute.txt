@@ -31,3 +31,12 @@ C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Autofac.Integra
 C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Contracts.dll.config
 C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Autofac.xml
 C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Autofac.Integration.WebApi.xml
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Castle.Core.dll
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Moq.dll
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\System.ValueTuple.dll
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Castle.Core.xml
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Moq.pdb
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\Moq.xml
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\PikachuTeam\pikachuTeam_back_server\DataAcquisition\bin\Debug\System.ValueTuple.xml

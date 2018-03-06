@@ -9,5 +9,6 @@ namespace DataAcquisition.Interfaces
 {
     public interface IImageAcquisition : ICameraImage
     {
+        String ConvertToBase64(byte[] imageByteArray);
     }
 }

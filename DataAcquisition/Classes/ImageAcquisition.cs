@@ -32,10 +32,10 @@ namespace DataAcquisition.Classes
             videoSource.WaitForStop();
 
             byte[] imageStreamByteArray = stream.ToArray();
-            string imageBase64String = Convert.ToBase64String(imageStreamByteArray);
+
+            string imageBase64String = ConvertToBase64(imageStreamByteArray);
 
             CameraImageResponse cameraImageResponse = new CameraImageResponse();
-            cameraImageResponse.Id = 1;
             cameraImageResponse.Base64 = imageBase64String;
             return cameraImageResponse;
         }
@@ -48,6 +48,12 @@ namespace DataAcquisition.Classes
 
             if (bitmap != null)
                 videoSource.SignalToStop();
+        }
+
+        public string ConvertToBase64(byte[] imageByteArray)
+        {
+            string imageBase64String = Convert.ToBase64String(imageByteArray);
+            return imageBase64String;
         }
     }
 }

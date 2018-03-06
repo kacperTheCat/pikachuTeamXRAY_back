@@ -28,3 +28,12 @@ C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Autofac.dll
 C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Autofac.Integration.WebApi.dll
 C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Autofac.xml
 C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Autofac.Integration.WebApi.xml
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Castle.Core.dll
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Moq.dll
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\System.ValueTuple.dll
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Castle.Core.xml
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Moq.pdb
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\Moq.xml
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\PikachuTeam\pikachuTeam_back_server\Contracts\bin\Debug\System.ValueTuple.xml

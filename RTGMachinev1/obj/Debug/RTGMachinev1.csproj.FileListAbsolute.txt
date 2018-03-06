@@ -178,3 +178,12 @@ C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\DataAcquisition.dll.conf
 C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\Services.dll.config
 C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\Autofac.xml
 C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\Autofac.Integration.WebApi.xml
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\Castle.Core.dll
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\Moq.dll
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\System.Threading.Tasks.Extensions.dll
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\System.ValueTuple.dll
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\Castle.Core.xml
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\Moq.pdb
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\Moq.xml
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\System.Threading.Tasks.Extensions.xml
+C:\PikachuTeam\pikachuTeam_back_server\RTGMachinev1\bin\System.ValueTuple.xml

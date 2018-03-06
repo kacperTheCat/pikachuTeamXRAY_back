@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using Contracts.Classes;
+using Contracts.Interfaces;
 using DataAcquisition.Classes;
 using DataAcquisition.Interfaces;
 using Services.Classes;
@@ -39,7 +41,6 @@ namespace RTGMachinev1
             builder.RegisterType<ImageAcquisition>().As<IImageAcquisition>();
             builder.RegisterType<ConnectionService>().As<IConnectionService>();
             builder.RegisterType<ConnectionAcquisition>().As<IConnectionAcquisition>();
-
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
