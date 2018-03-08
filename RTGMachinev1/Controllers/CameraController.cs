@@ -2,6 +2,7 @@
 using Services.Interfaces;
 using Contracts.Classes;
 using System.Web.Http.Cors;
+using System.Threading.Tasks;
 
 namespace CameraControl.Areas.HelpPage.Controllers
 {
@@ -15,14 +16,23 @@ namespace CameraControl.Areas.HelpPage.Controllers
         }
 
         // GET: api/Camera
+        [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public CameraImageResponse GetImage()
+        public CameraImageResponse GetPerview()
         {
-            var cameraImageResponse = _imageService.GetImage();
+            var cameraImageResponse = _imageService.GetPerview();
 
             return cameraImageResponse;
         }
 
+        [HttpPost]
+        [Route("api/Camera/Capture")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public CameraImageResponse GetImage([FromBody]CameraImageCaptureRequest cameraImageCaptureRequest)
+        {
+            var cameraImageResponse = _imageService.GetImage(cameraImageCaptureRequest);
+            return cameraImageResponse;
+        }
 
         //Filtry obrazu
         //TODO: podzielic, filtry

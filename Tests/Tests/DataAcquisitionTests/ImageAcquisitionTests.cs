@@ -21,16 +21,16 @@ namespace Tests.DataAcquisitionTests
             _imageAcquisition = new ImageAcquisition();
         }
 
-        [TestMethod]
-        public void GetImageTest()
-        {
-            var cameraImageResponse = new ImageService(_imageAcquisition);
+        //[TestMethod]
+        //public void GetImageTest()
+        //{
+        //    var cameraImageResponse = new ImageService(_imageAcquisition);
 
-            var result = cameraImageResponse.GetImage();
-            var resultBase64Length = result.Base64.Length % 4;
+        //    var result = cameraImageResponse.GetImage();
+        //    var resultBase64Length = result.Base64.Length % 4;
 
-            result.Base64.Should().NotBeNull();
-            resultBase64Length.Should().Be(0);
-        }
+        //    result.Base64.Should().NotBeNull();
+        //    resultBase64Length.Should().Be(0);
+        //}
     }
 }
