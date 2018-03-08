@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Contracts.Classes
 {
-    public class CameraImageResponse
+    public static class RTGMachines
     {
-        public string Base64 { get; set; }
-        public string errorMessage;   
-        
+        public static bool busy = false;
+        public static System.Timers.Timer aTimer;
     }
 }

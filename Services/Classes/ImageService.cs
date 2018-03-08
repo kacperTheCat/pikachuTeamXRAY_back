@@ -18,15 +18,17 @@ namespace Services.Classes
 
         public CameraImageResponse GetXRAYImage(CameraImageCaptureRequest cameraImageCaptureRequest)
         {
-            var cameraImageResponse = _imageAcquisition.GetXRAYImage(cameraImageCaptureRequest);
-            string base64image = cameraImageResponse.Base64;
-            MemoryStream stream = new MemoryStream();
+            
+                var cameraImageResponse = _imageAcquisition.GetXRAYImage(cameraImageCaptureRequest);
+                string base64image = cameraImageResponse.Base64;
+                MemoryStream stream = new MemoryStream();
 
-            GreyscaleImage(FromBase64Converter(base64image)).Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
-            byte[] imageStreamByteArray = stream.ToArray();
-            cameraImageResponse.Base64 = ToBase64Converter(imageStreamByteArray);
-            return cameraImageResponse;
 
+                GreyscaleImage(FromBase64Converter(base64image)).Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byte[] imageStreamByteArray = stream.ToArray();
+                cameraImageResponse.Base64 = ToBase64Converter(imageStreamByteArray);
+                return cameraImageResponse;
+            
         }
 
         public CameraImageResponse GetPerviewImage()
@@ -57,23 +59,36 @@ namespace Services.Classes
             }
             return image;
         }
-        public Bitmap BlackAndWhiteImage(Bitmap image)
+        public Bitmap MedianFilter(Bitmap image)
         {
+            Color temp;
             for (int x = 0; x < image.Width; x++)
             {
                 for (int y = 0; y < image.Height; y++)
                 {
-                    Color pixelColor = image.GetPixel(x, y);
+                    Color imagepixel = image.GetPixel(x, y);
+                    Color[] pixelColors = { image.GetPixel(x-1, y-1), image.GetPixel(x, y-1), image.GetPixel(x+1, y-1),
+                                            image.GetPixel(x-1, y), image.GetPixel(x, y), image.GetPixel(x+1, y),
+                                            image.GetPixel(x-1, y+1), image.GetPixel(x, y+1), image.GetPixel(x+1, y+1)};
+                    for(int p=0; p<9; p++)
+                    {
+                        for(int k=0; k<9; k++)
+                        {
+                            if(k!=0)
+                            {
+                                if (pixelColors[k - 1].A < pixelColors[k].A)
+                                {
+                                    temp = pixelColors[k - 1];
+                                    pixelColors[k - 1] = pixelColors[k];                                  
+                                    pixelColors[k] = temp;
+                                }
+                                   
+                            }                                
 
-                    int BWColor;
-                    if ((pixelColor.R + pixelColor.G + pixelColor.B) / 3 > 115)
-                        BWColor = 255;
-                    else
-                        BWColor = 0;
-                    pixelColor = Color.FromArgb(BWColor, BWColor, BWColor);
-
-                    image.SetPixel(x, y, pixelColor);
-
+                        }
+                        
+                    }
+                    image.SetPixel(x, y, pixelColors[4]);   
                 }
             }
             return image;

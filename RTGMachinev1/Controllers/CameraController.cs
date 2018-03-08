@@ -30,7 +30,15 @@ namespace CameraControl.Areas.HelpPage.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public CameraImageResponse GetXRAYImage([FromBody]CameraImageCaptureRequest cameraImageCaptureRequest)
         {
-            var cameraImageResponse = _imageService.GetXRAYImage(cameraImageCaptureRequest);
+            CameraImageResponse cameraImageResponse = new CameraImageResponse();           
+            if (RTGMachines.busy == false)
+            {
+                cameraImageResponse = _imageService.GetXRAYImage(cameraImageCaptureRequest);
+            }
+            else
+            {
+                cameraImageResponse.errorMessage = "Camera is busy";
+            }
             return cameraImageResponse;
         }
 

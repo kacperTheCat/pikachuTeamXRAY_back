@@ -8,12 +8,12 @@ namespace Contracts.Classes
 {
     public class CameraImageCaptureRequest
     {
-        protected int light;
-        protected int contrast;
-        protected bool blackWhite;
-        protected string patientName;
-        protected string user;
-        protected string imageDate;
-        protected string imageTime;
+        public int light;
+        public int contrast;
+        public bool medianFilter;
+        public string patientName;
+        public string userName;
+        public string imageDate;
+        public string imageTime;
     }
 }
