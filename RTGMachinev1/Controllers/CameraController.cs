@@ -18,9 +18,9 @@ namespace CameraControl.Areas.HelpPage.Controllers
         // GET: api/Camera
         [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public CameraImageResponse GetPerview()
+        public CameraImageResponse GetPerviewImage()
         {
-            var cameraImageResponse = _imageService.GetPerview();
+            var cameraImageResponse = _imageService.GetPerviewImage();
 
             return cameraImageResponse;
         }
@@ -28,43 +28,12 @@ namespace CameraControl.Areas.HelpPage.Controllers
         [HttpPost]
         [Route("api/Camera/Capture")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public CameraImageResponse GetImage([FromBody]CameraImageCaptureRequest cameraImageCaptureRequest)
+        public CameraImageResponse GetXRAYImage([FromBody]CameraImageCaptureRequest cameraImageCaptureRequest)
         {
-            var cameraImageResponse = _imageService.GetImage(cameraImageCaptureRequest);
+            var cameraImageResponse = _imageService.GetXRAYImage(cameraImageCaptureRequest);
             return cameraImageResponse;
         }
 
-        //Filtry obrazu
-        //TODO: podzielic, filtry
-        //bool BlackAndWhite = false, Greyscale = false, changeColor = false;
-        //    for (int x = 0; x < bitmap.Width; x++)
-        //    {
-        //        for (int y = 0; y < bitmap.Height; y++)
-        //        {
-        //            if (changeColor == true)
-        //            {
-        //                Color pixelColor = bitmap.GetPixel(x, y);
-        //                if (BlackAndWhite == true)
-        //                {
-        //                    int BWColor;
-        //                    if ((pixelColor.R + pixelColor.G + pixelColor.B) / 3 > 115)
-        //                        BWColor = 255;
-        //                    else
-        //                        BWColor = 0;
-        //                    pixelColor = Color.FromArgb(BWColor, BWColor, BWColor);
-        //                }
-        //                if (Greyscale == true)
-        //                {
-        //                    int greyColor = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
-        //                    pixelColor = Color.FromArgb(greyColor, greyColor, greyColor);
-        //                }
-
-        //                bitmap.SetPixel(x, y, pixelColor);
-        //            }
-
-
-        //        }
-        //    }
-
+        
     }
 }

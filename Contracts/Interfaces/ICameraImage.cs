@@ -9,7 +9,7 @@ namespace Contracts.Interfaces
 {
     public interface ICameraImage
     {
-        CameraImageResponse GetImage(CameraImageCaptureRequest rtgParametersRequest);
-        CameraImageResponse GetPerview();
+        CameraImageResponse GetXRAYImage(CameraImageCaptureRequest cameraImageCaptureRequest);
+        CameraImageResponse GetPerviewImage();
     }
 }

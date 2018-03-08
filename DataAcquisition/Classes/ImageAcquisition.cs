@@ -21,7 +21,7 @@ namespace DataAcquisition.Classes
         VideoCaptureDevice videoSource;
         public Bitmap bitmap;
 
-        public CameraImageResponse GetImage(CameraImageCaptureRequest cameraImageCaptureRequest)
+        public CameraImageResponse GetXRAYImage(CameraImageCaptureRequest cameraImageCaptureRequest)
         {
 
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -41,7 +41,7 @@ namespace DataAcquisition.Classes
             return cameraImageResponse;
         }
 
-        public CameraImageResponse GetPerview()
+        public CameraImageResponse GetPerviewImage()
         {
 
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);

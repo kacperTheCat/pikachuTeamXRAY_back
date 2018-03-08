@@ -16,21 +16,22 @@ namespace Services.Classes
             _imageAcquisition = imageAcquisition;
         }
 
-        public CameraImageResponse GetImage(CameraImageCaptureRequest cameraImageCaptureRequest)
+        public CameraImageResponse GetXRAYImage(CameraImageCaptureRequest cameraImageCaptureRequest)
         {
-            var cameraImageResponse = _imageAcquisition.GetImage(cameraImageCaptureRequest);
+            var cameraImageResponse = _imageAcquisition.GetXRAYImage(cameraImageCaptureRequest);
             string base64image = cameraImageResponse.Base64;
             MemoryStream stream = new MemoryStream();
-            BlackAndWhiteImage(FromBase64Converter(base64image)).Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            GreyscaleImage(FromBase64Converter(base64image)).Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
             byte[] imageStreamByteArray = stream.ToArray();
             cameraImageResponse.Base64 = ToBase64Converter(imageStreamByteArray);
             return cameraImageResponse;
 
         }
 
-        public CameraImageResponse GetPerview()
+        public CameraImageResponse GetPerviewImage()
         {
-            var cameraImageResponse = _imageAcquisition.GetPerview();
+            var cameraImageResponse = _imageAcquisition.GetPerviewImage();
 
             return cameraImageResponse;
         }

@@ -94,6 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CameraImageCaptureRequest.cs" />
     <Compile Include="Classes\CameraImageResponse.cs" />
     <Compile Include="Classes\ConnectionDetailsResponse.cs" />
     <Compile Include="Interfaces\ICameraImage.cs" />
