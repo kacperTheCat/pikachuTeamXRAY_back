@@ -27,14 +27,14 @@ namespace DataAcquisition.Classes
 
         public CameraImageResponse GetXRAYImage(CameraImageCaptureRequest cameraImageCaptureRequest)
         {
-            RTGMachines.busy = true;
+            RTGMachine.busy = true;
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
-            videoSource.NewFrame += video_NewFrame;
+            videoSource.NewFrame += video_NewCaptureFrame;
 
-            RTGMachines.aTimer = new System.Timers.Timer(10000);
-            RTGMachines.aTimer.Elapsed += OnTimedEvent;
-            RTGMachines.aTimer.Enabled = true;
+            RTGMachine.aTimer = new System.Timers.Timer(10000);
+            RTGMachine.aTimer.Elapsed += OnTimedEvent;
+            RTGMachine.aTimer.Enabled = true;
             videoSource.Start();
 
             
@@ -58,7 +58,7 @@ namespace DataAcquisition.Classes
 
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
-            videoSource.NewFrame += video_NewFrame;
+            videoSource.NewFrame += video_NewPreviewFrame;
             videoSource.Start();
             
 
@@ -74,7 +74,7 @@ namespace DataAcquisition.Classes
             return cameraImageResponse;
         }
 
-        private void video_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        private void video_NewPreviewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             bitmap = (Bitmap)eventArgs.Frame.Clone();
             bitmap.Save(stream, ImageFormat.Jpeg);
@@ -82,10 +82,18 @@ namespace DataAcquisition.Classes
             if (bitmap != null)
                 videoSource.SignalToStop();
         }
+        private void video_NewCaptureFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            bitmap = (Bitmap)eventArgs.Frame.Clone();
+            bitmap.Save(stream, ImageFormat.Jpeg);
+
+            if (bitmap != null)
+                videoSource.SignalToStop();
+        }
 
         private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            RTGMachines.busy = false;
+            RTGMachine.busy = false;
         }
 
         public string ConvertToBase64(byte[] imageByteArray)

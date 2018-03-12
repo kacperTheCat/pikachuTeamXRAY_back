@@ -10,10 +10,11 @@ namespace Contracts.Classes
     {
         public int light;
         public int contrast;
-        public bool medianFilter;
+        public bool negative;
         public string patientName;
         public string userName;
         public string imageDate;
         public string imageTime;
+        public int machineID;
     }
 }

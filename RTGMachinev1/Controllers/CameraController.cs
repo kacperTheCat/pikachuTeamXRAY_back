@@ -31,7 +31,7 @@ namespace CameraControl.Areas.HelpPage.Controllers
         public CameraImageResponse GetXRAYImage([FromBody]CameraImageCaptureRequest cameraImageCaptureRequest)
         {
             CameraImageResponse cameraImageResponse = new CameraImageResponse();           
-            if (RTGMachines.busy == false)
+            if (RTGMachine.busy == false)
             {
                 cameraImageResponse = _imageService.GetXRAYImage(cameraImageCaptureRequest);
             }
