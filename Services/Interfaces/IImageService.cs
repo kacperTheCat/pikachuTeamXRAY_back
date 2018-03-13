@@ -17,7 +17,7 @@ namespace Services.Interfaces
         Bitmap Negative(Bitmap image);
         Bitmap MedianFilter(Bitmap image);
         Bitmap Brightness(Bitmap image, int brightness);
-        Bitmap Contrast(Bitmap image, double contrast);
+        Bitmap Contrast(Bitmap image, int contrast);
 
     }
 }
