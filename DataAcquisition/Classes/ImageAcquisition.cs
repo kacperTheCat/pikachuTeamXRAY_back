@@ -27,14 +27,14 @@ namespace DataAcquisition.Classes
 
         public CameraImageResponse GetXRAYImage(CameraImageCaptureRequest cameraImageCaptureRequest)
         {
-            RTGMachines.busy = true;
+            RTGMachine.busy = true;
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
             videoSource.NewFrame += video_NewFrame;
 
-            RTGMachines.aTimer = new System.Timers.Timer(10000);
-            RTGMachines.aTimer.Elapsed += OnTimedEvent;
-            RTGMachines.aTimer.Enabled = true;
+            RTGMachine.aTimer = new System.Timers.Timer(10000);
+            RTGMachine.aTimer.Elapsed += OnTimedEvent;
+            RTGMachine.aTimer.Enabled = true;
             videoSource.Start();
 
             
@@ -53,7 +53,7 @@ namespace DataAcquisition.Classes
 
         }
 
-        public CameraImageResponse GetPerviewImage()
+        public CameraImageResponse GetPreviewImage()
         {
 
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -85,7 +85,7 @@ namespace DataAcquisition.Classes
 
         private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            RTGMachines.busy = false;
+            RTGMachine.busy = false;
         }
 
         public string ConvertToBase64(byte[] imageByteArray)

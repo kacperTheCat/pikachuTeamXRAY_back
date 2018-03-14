@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Contracts.Classes
 {
-    public static class RTGMachines
+    public static class RTGMachine
     {
-        public static bool busy = false;
+        public static bool busy = false;        
         public static System.Timers.Timer aTimer;
     }
 }

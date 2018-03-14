@@ -31,9 +31,9 @@ namespace Services.Classes
             
         }
 
-        public CameraImageResponse GetPerviewImage()
+        public CameraImageResponse GetPreviewImage()
         {
-            var cameraImageResponse = _imageAcquisition.GetPerviewImage();
+            var cameraImageResponse = _imageAcquisition.GetPreviewImage();
 
             return cameraImageResponse;
         }
@@ -59,7 +59,7 @@ namespace Services.Classes
             }
             return image;
         }
-        public Bitmap MedianFilter(Bitmap image)
+       /* public Bitmap MedianFilter(Bitmap image)
         {
             Color temp;
             for (int x = 0; x < image.Width; x++)
@@ -92,7 +92,7 @@ namespace Services.Classes
                 }
             }
             return image;
-        }
+        }*/
         public Bitmap FromBase64Converter(string image)
         {
             byte[] imageBytes = System.Convert.FromBase64String(image);
