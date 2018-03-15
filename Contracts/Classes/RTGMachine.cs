@@ -8,7 +8,7 @@ namespace Contracts.Classes
 {
     public static class RTGMachine
     {
-        public static bool busy = false;
+        public static bool busy = false;        
         public static System.Timers.Timer aTimer;
     }
 }

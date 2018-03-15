@@ -10,6 +10,7 @@ namespace CameraControl.Areas.HelpPage.Controllers
     {
         private readonly IImageService _imageService;
 
+
         public CameraController(IImageService imageService)
         {
             _imageService = imageService;
@@ -20,7 +21,7 @@ namespace CameraControl.Areas.HelpPage.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public CameraImageResponse GetPerviewImage()
         {
-            var cameraImageResponse = _imageService.GetPerviewImage();
+            var cameraImageResponse = _imageService.GetPreviewImage();
 
             return cameraImageResponse;
         }

@@ -53,7 +53,7 @@ namespace DataAcquisition.Classes
 
         }
 
-        public CameraImageResponse GetPerviewImage()
+        public CameraImageResponse GetPreviewImage()
         {
 
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
