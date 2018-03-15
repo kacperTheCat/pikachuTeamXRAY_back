@@ -97,7 +97,7 @@
     <Compile Include="Classes\CameraImageCaptureRequest.cs" />
     <Compile Include="Classes\CameraImageResponse.cs" />
     <Compile Include="Classes\ConnectionDetailsResponse.cs" />
-    <Compile Include="Classes\RTGMachines.cs" />
+    <Compile Include="Classes\RTGMachine.cs" />
     <Compile Include="Interfaces\ICameraImage.cs" />
     <Compile Include="Interfaces\IConnectionDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
