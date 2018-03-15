@@ -10,5 +10,11 @@ namespace Contracts.Classes
     {
         public static bool busy = false;        
         public static System.Timers.Timer aTimer;
+        public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            aTimer.Enabled = false;
+            busy = false;
+        }
+        
     }
 }
