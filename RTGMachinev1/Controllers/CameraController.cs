@@ -14,6 +14,7 @@ namespace CameraControl.Areas.HelpPage.Controllers
         public CameraController(IImageService imageService)
         {
             _imageService = imageService;
+           
         }
 
         // GET: api/Camera

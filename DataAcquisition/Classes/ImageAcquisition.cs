@@ -33,7 +33,7 @@ namespace DataAcquisition.Classes
             videoSource.NewFrame += video_NewCaptureFrame;
 
             RTGMachine.aTimer = new System.Timers.Timer(10000);
-            RTGMachine.aTimer.Elapsed += OnTimedEvent;
+            RTGMachine.aTimer.Elapsed += RTGMachine.OnTimedEvent;            
             RTGMachine.aTimer.Enabled = true;
             videoSource.Start();
 
@@ -91,10 +91,11 @@ namespace DataAcquisition.Classes
                 videoSource.SignalToStop();
         }
 
-        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+       /* private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
+            RTGMachine.aTimer.Enabled = false;
             RTGMachine.busy = false;
-        }
+        }*/
 
         public string ConvertToBase64(byte[] imageByteArray)
         {
