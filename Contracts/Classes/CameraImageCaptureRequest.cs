@@ -15,6 +15,6 @@ namespace Contracts.Classes
         public string userName;
         public string imageDate;
         public string imageTime;
-        public int machineID;
+        
     }
 }

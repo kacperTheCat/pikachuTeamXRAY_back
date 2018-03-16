@@ -90,13 +90,7 @@ namespace DataAcquisition.Classes
             if (bitmap != null)
                 videoSource.SignalToStop();
         }
-
-       /* private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
-        {
-            RTGMachine.aTimer.Enabled = false;
-            RTGMachine.busy = false;
-        }*/
-
+      
         public string ConvertToBase64(byte[] imageByteArray)
         {
             string imageBase64String = Convert.ToBase64String(imageByteArray);

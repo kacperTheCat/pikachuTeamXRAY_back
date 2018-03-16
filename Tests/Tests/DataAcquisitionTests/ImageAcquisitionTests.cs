@@ -41,18 +41,6 @@ namespace Tests.DataAcquisitionTests
             cameraImageCaptureRequest.userName = "Paweł Nowak";
             var result = _imageAcquisition.GetXRAYImage(cameraImageCaptureRequest);
             result.Should().NotBeNull();
-        }
-
-        //[TestMethod]
-        //public void GetImageTest()
-        //{
-        //    var cameraImageResponse = new ImageService(_imageAcquisition);
-
-        //    var result = cameraImageResponse.GetImage();
-        //    var resultBase64Length = result.Base64.Length % 4;
-
-        //    result.Base64.Should().NotBeNull();
-        //    resultBase64Length.Should().Be(0);
-        //}
+        }       
     }
 }
